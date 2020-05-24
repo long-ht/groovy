@@ -20,7 +20,7 @@ class Playlist extends React.Component {
                     trackList={this.props.playlistTracks}
                     onRemove={this.props.onRemove}
                 />
-                <button className="Playlist-save">SAVE TO SPOTIFY</button>
+                <button className="Playlist-save" onClick={this.props.onSave}>SAVE TO SPOTIFY</button>
             </div>
         );
     }
