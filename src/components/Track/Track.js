@@ -17,11 +17,14 @@ class Track extends React.Component {
         this.props.onRemove(this.props.track);
     }
     render() {
+        console.log(this.props.track);
         return (
             <div className="Track">
                 <div className="Track-information">
                     <h3>{this.props.track.name}</h3>
-                    <p>{this.props.track.artist} | {this.props.track.album.name}</p>
+                    <p>{this.props.track.artists.map(artist=>{
+                        return artist.name;
+                    }).toString()} | {this.props.track.album.name}</p>
                 </div>
                 <button className="Track-action" onClick={(this.props.isRemoval) ? this.removeTrack : this.addTrack}>
                     {this.renderAction()}

@@ -1,6 +1,9 @@
 const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
-const redirectURI = "http:%2F%2Flocalhost:3000%2F";
+const redirectURI = "http://localhost:3000%2F";
 let accessToken = null;
+let userId = null;
+let playlistId = null;
+
 const Spotify = {
     getAccessToken() {
         if (accessToken !== null) {
@@ -12,7 +15,7 @@ const Spotify = {
             accessToken = url.substring(index + 1, url.indexOf("&", index));
             index = url.indexOf("=", index + 1);
             index = url.indexOf("=", index + 1);
-            const expiresIn = url.substring(index + 1, url.indexOf("&", index));
+            const expiresIn = url.substring(index + 1, url.length);
             window.setTimeout(() => accessToken = '', expiresIn * 1000);
             window.history.pushState('Access Token', null, '/');
             return accessToken;
@@ -21,13 +24,12 @@ const Spotify = {
         }
     },
     async search(term) {
-        this.getAccessToken();
         if (term !== "") {
             const endpoint = `https://api.spotify.com/v1/search?type=track&q=${term}`;
             try {
                 const response = await fetch(endpoint, {
                     headers: {
-                        Authorization: `Bearer ${accessToken}`
+                        Authorization: `Bearer ${this.getAccessToken()}`
                     }
                 });
                 if (response.ok) {
@@ -59,34 +61,38 @@ const Spotify = {
         if (!name || !trackURIs) {
             return;
         }
-        const token=this.getAccessToken();
-        const userId=null;
-        let response = await fetch('https://api.spotify.com/v1/me', {
-            headers: {
-                Authorization: `Bearer ${token}`
+        try {
+            let responseUser = await fetch('https://api.spotify.com/v1/me', {
+                headers: {
+                    Authorization: `Bearer ${this.getAccessToken()}`
+                }
+            });
+            if (responseUser.ok) {
+                const jsonResponseUser = await responseUser.json();
+                userId = jsonResponseUser.id;
             }
-        });
-        if (response.ok) {
-            const jsonResponse = await response.json();
-            userId=jsonResponse.id;
+            let responsePlaylist = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
+                method: 'POST',
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    'Content-Type': 'application%5Cson',
+                },
+                body: JSON.stringify({name:name})
+            });
+            if (responsePlaylist.ok) {
+                const jsonResponsePlaylist = await responsePlaylist.json();
+                playlistId = jsonResponsePlaylist.id;
+            }
+            fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks?uris=${trackURIs.toString()}`, {
+                method:'POST',
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                    'Content-Type': 'application%5Cson'
+                },
+            });
+        } catch (error) {
+            console.log(error);
         }
-        response = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists?name=${name}`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type':'application\json'
-            }
-        });
-        const playlistId=null;
-        if (response.ok) {
-            const jsonResponse = await response.json();
-            playlistId=jsonResponse.id;
-        }
-        fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks?uris=${trackURIs.toString()}`, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type':'application\json'
-            }
-        });
     }
 }
 export default Spotify;
