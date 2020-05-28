@@ -1,7 +1,6 @@
 const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
 const redirectURI = process.env.REACT_APP_REDIRECT_URL;
 
-
 const Spotify = {
     getAccessTokenLocal() {
         var expires = 0 + localStorage.getItem('pa_expires', '0');
@@ -54,7 +53,7 @@ const Spotify = {
                                 artists: track.artists,
                                 album: track.album.name,
                                 uri: track.uri,
-                                image: track.album.images[0].url
+                                image: track.album.images[1].url
                             };
                         });
                         return response;
@@ -65,7 +64,7 @@ const Spotify = {
                                 name: album.name,
                                 artists: album.artists,
                                 uri: album.uri,
-                                image: album.images[0].url
+                                image: album.images[1].url
                             };
                         });
                         return response;
