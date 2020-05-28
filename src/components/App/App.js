@@ -118,6 +118,16 @@ class App extends React.Component {
             />
           </div>
         </div>
+        <div className="Contact">
+          <p className="Author">Code by Long Tran</p>
+          <p className="Contact-me">Contact Me</p>
+          <div className="Icon">
+            <a href="http://www.youtube.com/watch?v=dQw4w9WgXcQ&t=0m42s"><i className="fab fa-facebook-square"></i></a>
+            <a href="http://www.youtube.com/watch?v=dQw4w9WgXcQ&t=0m42s"><i className="fab fa-twitter-square"></i></a>
+            <a href="http://www.youtube.com/watch?v=dQw4w9WgXcQ&t=0m42s"><i className="fab fa-github-square"></i></a>
+            <a href="http://www.youtube.com/watch?v=dQw4w9WgXcQ&t=0m42s"><i className="fab fa-linkedin"></i></a>
+          </div>
+        </div>
       </div>
     );
   }

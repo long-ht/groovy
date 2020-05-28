@@ -39,6 +39,39 @@ h2 {
   width: 100%;
 }
 
+.Contact {
+  padding: 1rem 0;
+  background-color: #E54B4B;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+}
+
+.Author {
+  font-size: 1rem;
+  padding-bottom: 0.2rem;
+}
+
+.Contact-me {
+  font-size: 0.9rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #fff;
+  display: inline-block;
+}
+
+.Icon a {
+  font-size: 1.8rem;
+  padding: 0.3rem;
+  margin-top: 2rem;
+  color: #fff;
+}
+
+.Icon a:hover {
+  cursor: pointer;
+  color: #A62639;
+}
+
 @media only screen and (max-width: 1020px) {
   .App-playlist {
     align-items: center;

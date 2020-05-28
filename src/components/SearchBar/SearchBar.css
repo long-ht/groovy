@@ -5,12 +5,12 @@
 }
 
 .form-control:focus {
-  border-color:  transparent;
+  border-color: transparent;
   box-shadow: 0 1px 1px #E54B4B inset, 0 0 8px #E54B4B;
 }
 
 .SearchButton {
-  margin:0px auto;
+  margin: 0px auto;
   margin-bottom: 3rem;
   margin-top: 2rem;
   cursor: pointer;
@@ -24,7 +24,7 @@
   border: 0px;
   color: #fff;
   font-weight: 500;
-  outline:none!important;
+  outline: none!important;
 }
 
 .SearchButton:hover {
@@ -35,13 +35,22 @@
   background-color: #E54B4B;
   color: #fff;
 }
+
 .dropdown-toggle:focus {
-  border-color:  transparent;
+  border-color: transparent;
   box-shadow: 0 1px 1px #E54B4B inset, 0 0 8px #E54B4B;
 }
 
 .dropdown-item {
   width: 92.41px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.dropdown-item:hover {
+  cursor: pointer;
+  background-color: transparent;
 }
 
 @media only screen and (max-width: 768px) {
