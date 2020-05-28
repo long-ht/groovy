@@ -1,0 +1,34 @@
+.Nav-button {
+    margin-right:50% ;
+    text-align: center;
+}
+
+.Button {
+    color: #E54B4B;
+    width:30%;
+    background-color: transparent;
+    padding-top: 0.25rem;
+    padding-bottom: 0.5rem;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    border-color: transparent;
+    font-size: 1.5rem;
+    outline:none!important;
+}
+
+.Button :hover{
+    color: #A62639;
+}
+
+.Playlist-button {
+    display: none;
+}
+
+@media only screen and (max-width: 1020px) {
+    .Nav-button {
+        margin-right:0% ;
+    }
+    .Playlist-button {
+        display: inline-block;
+    }
+}

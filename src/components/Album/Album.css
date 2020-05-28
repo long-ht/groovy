@@ -1,0 +1,51 @@
+.Album {
+  display: flex;
+  align-items: left;
+  border-bottom: 1px solid rgba(256, 256, 256, 0.8);
+}
+
+.Album :hover {
+  cursor: pointer;
+}
+
+.Album-action {
+  cursor: pointer;
+  padding: .5rem;
+  font-size: 1.05rem;
+  transition: color .25s;
+  border: 0px;
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  outline:none!important;
+}
+
+.Album-action:hover {
+  color: #E54B4B;
+}
+
+.Album-information {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 72px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 0.4rem;
+}
+
+.Album-information h3 {
+  margin-bottom: .22rem;
+}
+
+.Album-information p {
+  font-size: .83rem;
+  font-weight: 300;
+  color: rgba(256, 256, 256, 0.8);
+}
+
+.Cover-image {
+  height: 72px;
+  width: 72px;
+}

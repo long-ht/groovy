@@ -11,20 +11,20 @@ class Track extends React.Component {
         return (this.props.isRemoval) ? "-" : "+";
     }
     addTrack() {
-        this.props.onAdd(this.props.track);
+        this.props.onAddTrack(this.props.track);
     }
     removeTrack() {
         this.props.onRemove(this.props.track);
     }
     render() {
-        console.log(this.props.track);
         return (
             <div className="Track">
+                <img className="Cover-image" src={this.props.track.image}></img>
                 <div className="Track-information">
                     <h3>{this.props.track.name}</h3>
-                    <p>{this.props.track.artists.map(artist=>{
+                    <p>{this.props.track.artists.map(artist => {
                         return artist.name;
-                    }).toString()} | {this.props.track.album.name}</p>
+                    }).toString()} | {this.props.track.album}</p>
                 </div>
                 <button className="Track-action" onClick={(this.props.isRemoval) ? this.removeTrack : this.addTrack}>
                     {this.renderAction()}

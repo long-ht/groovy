@@ -2,16 +2,24 @@
     width: 50%;
     height: 950px;
     overflow-y: scroll;
-    padding: .88rem;
-    background-color: rgba(1, 12, 63, 0.7);
+    padding: 1rem 1.16rem;
+    background-color:#535353;
     box-shadow: 0 4px 2px 2px #000000;
+    border-radius: 0.25rem;
   }
-  
+  .Result {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.55rem;
+    padding-top: 0.5rem;
+    padding-bottom: 1px;
+    height: 45px;
+    border-bottom: 1px solid #6f6f6f;
+    /* padding-bottom: 0.25rem; */
+  }
   ::-webkit-scrollbar {
       width: 0px;
       background: transparent;
   }
-  
   @media only screen and (max-width: 1020px) {
     .SearchResults {
       width: 90%;

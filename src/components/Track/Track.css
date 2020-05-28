@@ -1,6 +1,6 @@
  .Track {
     display: flex;
-    align-items: center;
+    align-items: left;
     border-bottom: 1px solid rgba(256, 256, 256, 0.8);
   }
   
@@ -12,10 +12,11 @@
     border: 0px;
     background-color: rgba(0, 0, 0, 0);
     color: #fff;
+    outline:none!important;
   }
   
   .Track-action:hover {
-    color: rgba(265, 265, 265, .5);
+    color: #A62639;
   }
   
   .Track-information {
@@ -24,6 +25,10 @@
     flex-direction: column;
     justify-content: center;
     height: 72px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 0.4rem;
   }
   
   .Track-information h3 {
@@ -34,4 +39,8 @@
     font-size: .83rem;
     font-weight: 300;
     color: rgba(256, 256, 256, 0.8);
+  }
+  .Cover-image {
+    height:72px;
+    width:72px;
   }
