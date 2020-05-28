@@ -35,7 +35,7 @@ const Spotify = {
         }
     },
     async search(term, searchBy) {
-        accessToken= this.getAccessToken();
+        const accessToken= this.getAccessToken();
         if (term !== "") {
             const endpoint = `https://api.spotify.com/v1/search?type=${searchBy}&q=${term}`;
             try {
@@ -82,7 +82,7 @@ const Spotify = {
         }
     },
     async onAlbumClick(id, imageUrl, albumName) {
-        accessToken= this.getAccessToken();
+        const accessToken= this.getAccessToken();
         const endpoint = `https://api.spotify.com/v1/albums/${id}/tracks`;
         try {
             const response = await fetch(endpoint, {
