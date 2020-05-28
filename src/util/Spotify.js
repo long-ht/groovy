@@ -1,7 +1,6 @@
 const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
 const redirectURI = process.env.REACT_APP_REDIRECT_URL;
-let userId = null;
-let playlistId = null;
+
 
 const Spotify = {
     getAccessTokenLocal() {
@@ -17,7 +16,7 @@ const Spotify = {
         localStorage.setItem('pa_expires', (new Date()).getTime() + expires_in);
     },
     getAccessToken() {
-        let accessToken=this.getAccessTokenLocal();
+        let accessToken = this.getAccessTokenLocal();
         if (accessToken) {
             return accessToken;
         }
@@ -30,7 +29,7 @@ const Spotify = {
             const expiresIn = url.substring(index + 1, url.length);
             window.setTimeout(() => accessToken = '', expiresIn * 1000);
             window.history.pushState('Access Token', null, '/');
-            this.setAccessTokenLocal(accessToken,expiresIn);
+            this.setAccessTokenLocal(accessToken, expiresIn);
             return accessToken;
         } else {
             window.location = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectURI}`;
@@ -116,8 +115,10 @@ const Spotify = {
         if (!name || !trackURIs) {
             return;
         }
+        let userId = null;
+        let playlistId = null;
         try {
-            const accessToken=this.getAccessToken();
+            const accessToken = this.getAccessToken();
             let responseUser = await fetch('https://api.spotify.com/v1/me', {
                 headers: {
                     Authorization: `Bearer ${accessToken}`

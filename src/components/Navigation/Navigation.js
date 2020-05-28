@@ -15,9 +15,9 @@ class Navigation extends React.Component {
     render() {
         return (
             <div className="Nav-button">
-                <button className="Button" onClick={this.handleReturn}><i class="fas fa-angle-left"></i></button>
-                <button className="Button" onClick={this.handleForward}><i class="fas fa-angle-right"></i></button>
-                <button className="Playlist-button Button"><a href="#Playlist" style={{color: "#E54B4B", textDecoration: "none"}}><i class="fas fa-angle-down"></i></a></button>
+                <button className="Button" onClick={this.handleReturn}><i className="fas fa-angle-left"></i></button>
+                <button className="Button" onClick={this.handleForward}><i className="fas fa-angle-right"></i></button>
+                <button className="Playlist-button Button"><a href="#Playlist" style={{color: "#E54B4B", textDecoration: "none"}}><i className="fas fa-angle-down"></i></a></button>
             </div>
         );
     }
