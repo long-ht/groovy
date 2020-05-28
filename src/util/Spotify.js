@@ -1,5 +1,5 @@
 const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
-const redirectURI = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
+const redirectURI = process.env.REACT_APP_REDIRECT_URL;
 let userId = null;
 let playlistId = null;
 
