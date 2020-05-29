@@ -2,6 +2,20 @@ const clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
 const redirectURI = process.env.REACT_APP_REDIRECT_URL;
 
 const Spotify = {
+    handleSuccess(message) {
+        document.getElementById("Alert").innerText = message;
+        document.getElementById("Alert").style.color = "#3c763d";
+        document.getElementById("Alert").style.backgroundColor = "#dff0d8";
+        document.getElementById("Alert").style.display = "block";
+        setTimeout(function () { document.getElementById("Alert").style.display = "none"; }, 2000);
+    },
+    handleError(message) {
+        document.getElementById("Alert").innerText = message;
+        document.getElementById("Alert").style.color = "#a94442";
+        document.getElementById("Alert").style.backgroundColor = "#f2dede";
+        document.getElementById("Alert").style.display = "block";
+        setTimeout(function () { document.getElementById("Alert").style.display = "none"; }, 2000);
+    },
     getAccessTokenLocal() {
         var expires = 0 + localStorage.getItem('pa_expires', '0');
         if ((new Date()).getTime() > expires) {
@@ -35,7 +49,7 @@ const Spotify = {
         }
     },
     async search(term, searchBy) {
-        const accessToken= this.getAccessToken();
+        const accessToken = this.getAccessToken();
         if (term !== "") {
             const endpoint = `https://api.spotify.com/v1/search?type=${searchBy}&q=${term}`;
             try {
@@ -69,20 +83,19 @@ const Spotify = {
                             };
                         });
                         return response;
-                    } else {
-                        return [];
                     }
                 }
             } catch (error) {
-                console.log(error);
+                this.handleError("Search failed");
                 return [];
             }
         } else {
+            this.handleError("Empty field");
             return [];
         }
     },
     async onAlbumClick(id, imageUrl, albumName) {
-        const accessToken= this.getAccessToken();
+        const accessToken = this.getAccessToken();
         const endpoint = `https://api.spotify.com/v1/albums/${id}/tracks`;
         try {
             const response = await fetch(endpoint, {
@@ -107,7 +120,7 @@ const Spotify = {
                 }
             }
         } catch (error) {
-            console.log(error);
+            this.handleError("Failed to fetch album");
             return [];
         }
     },
@@ -148,10 +161,9 @@ const Spotify = {
                     'Content-Type': 'application%5Cson'
                 },
             });
-            document.getElementById("Alert").style.display="block";
-            setTimeout(function(){ document.getElementById("Alert").style.display="none"; }, 2000);
+            this.handleSuccess("Playlist saved");
         } catch (error) {
-            console.log(error);
+            this.handleError("Save failed");
         }
     }
 }

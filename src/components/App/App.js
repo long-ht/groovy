@@ -6,10 +6,6 @@ import Playlist from "../Playlist/Playlist";
 import Navigation from "../Navigation/Navigation";
 import Spotify from "../../util/Spotify";
 
-const facebook=process.env.REACT_APP_FACEBOOK_PROFILE;
-const github=process.env.REACT_APP_GITHUB_PROFILE;
-const linkedin=process.env.REACT_APP_LINKEDIN_PROFILE;
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -99,7 +95,7 @@ class App extends React.Component {
       <div>
         <h1>Groovy</h1>
         <div id="Alert" className="Alert">
-          Playlist Saved
+          Noti
         </div>
         <div className="App">
           <SearchBar onSearch={this.search} />
@@ -127,9 +123,8 @@ class App extends React.Component {
           <p className="Author">Code by Long Tran</p>
           <p className="Contact-me">Contact Me</p>
           <div className="Icon">
-            <a href={{facebook}} target="_blank"><i className="fab fa-facebook-square"></i></a>
-            <a href={{github}} target="_blank"><i className="fab fa-github-square"></i></a>
-            <a href={{linkedin}} target="_blank"><i className="fab fa-linkedin"></i></a>
+            <a href="https://github.com/longtran94410/groovy" target="_blank"><i className="fab fa-github-square"></i></a>
+            <a href="https://www.linkedin.com/in/long-tr%E1%BA%A7n-44091614a" target="_blank"><i className="fab fa-linkedin"></i></a>
           </div>
         </div>
       </div>
