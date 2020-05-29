@@ -8,7 +8,6 @@ class Album extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
     addAlbum() {
-        console.log("reached");
         this.props.onAddAlbum(this.props.album.id, this.props.album.image, this.props.album.name);
     }
     handleClick() {
@@ -17,7 +16,7 @@ class Album extends React.Component {
     render() {
         return (
             <div className="Album">
-                <img className="Cover-image" src={this.props.album.image} onClick={this.handleClick}></img>
+                <img className="Cover-image" src={this.props.album.image} onClick={this.handleClick} alt="Cover Art"></img>
                 <div className="Album-information" onClick={this.handleClick}>
                     <h3>{this.props.album.name}</h3>
                     <p>{this.props.album.artists.map(artist => {

@@ -6,6 +6,10 @@ import Playlist from "../Playlist/Playlist";
 import Navigation from "../Navigation/Navigation";
 import Spotify from "../../util/Spotify";
 
+const facebook=process.env.REACT_APP_FACEBOOK_PROFILE;
+const github=process.env.REACT_APP_GITHUB_PROFILE;
+const linkedin=process.env.REACT_APP_LINKEDIN_PROFILE;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -62,7 +66,6 @@ class App extends React.Component {
     })
     Spotify.savePlaylist(this.state.playlistName, trackURIs);
     this.setState({ playlistName: "New Playlist", playlistTracks: [] });
-    alert("Playlist Saved");
   }
   previous() {
     if (this.state.searchIndex > 0) {
@@ -91,11 +94,13 @@ class App extends React.Component {
     })
     this.setState({ playlistTracks: this.state.playlistTracks });
   }
-
   render() {
     return (
       <div>
         <h1>Groovy</h1>
+        <div id="Alert" className="Alert">
+          Playlist Saved
+        </div>
         <div className="App">
           <SearchBar onSearch={this.search} />
           <Navigation
@@ -122,10 +127,9 @@ class App extends React.Component {
           <p className="Author">Code by Long Tran</p>
           <p className="Contact-me">Contact Me</p>
           <div className="Icon">
-            <a href="http://www.youtube.com/watch?v=dQw4w9WgXcQ&t=0m42s"><i className="fab fa-facebook-square"></i></a>
-            <a href="http://www.youtube.com/watch?v=dQw4w9WgXcQ&t=0m42s"><i className="fab fa-twitter-square"></i></a>
-            <a href="http://www.youtube.com/watch?v=dQw4w9WgXcQ&t=0m42s"><i className="fab fa-github-square"></i></a>
-            <a href="http://www.youtube.com/watch?v=dQw4w9WgXcQ&t=0m42s"><i className="fab fa-linkedin"></i></a>
+            <a href={{facebook}} target="_blank"><i className="fab fa-facebook-square"></i></a>
+            <a href={{github}} target="_blank"><i className="fab fa-github-square"></i></a>
+            <a href={{linkedin}} target="_blank"><i className="fab fa-linkedin"></i></a>
           </div>
         </div>
       </div>

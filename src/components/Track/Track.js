@@ -19,7 +19,7 @@ class Track extends React.Component {
     render() {
         return (
             <div className="Track">
-                <img className="Cover-image" src={this.props.track.image}></img>
+                <img className="Cover-image" src={this.props.track.image} alt="Cover Art"></img>
                 <div className="Track-information">
                     <h3>{this.props.track.name}</h3>
                     <p>{this.props.track.artists.map(artist => {

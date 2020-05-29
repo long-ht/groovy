@@ -148,6 +148,8 @@ const Spotify = {
                     'Content-Type': 'application%5Cson'
                 },
             });
+            document.getElementById("Alert").style.display="block";
+            setTimeout(function(){ document.getElementById("Alert").style.display="none"; }, 2000);
         } catch (error) {
             console.log(error);
         }
